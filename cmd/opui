@@ -1,0 +1,24 @@
+is_exit=0
+path="./"
+# 检查变量是否存在-x
+for var in $@
+do
+  if [ $var = "-x" ]
+  then
+    #echo "找到了-x"
+    is_exit=1
+  elif [ -d $var ];then
+    #echo "找到了路径"
+    path=$var
+  fi
+done
+
+# 使用图形界面打开指定路径
+nautilus -w $path 2>/dev/null 
+if [ $is_exit = 1 ];then
+  #echo "拜拜喽"
+  kill -1 `ps -o ppid -p $$ | tail -1`
+fi
+exit
+
+
