@@ -1,0 +1,6 @@
+# 查询指定信息的进程信息
+ps -aux|grep $1
+
+# 设置git中文quote问题
+git config --global core.quotepath false
+
